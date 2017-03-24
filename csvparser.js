@@ -46,7 +46,17 @@ fs.readFile('data.csv', function(err, csvData){
 			}
 		}
 
-		console.log(infoArr);
+		var jsonData = [];
+
+		for(i=0; i<infoArr.length; i++){
+			var obj = {};
+			for(j=0; j<infoArr[i].length; j++){
+				obj[header[j]] = infoArr[i][j]
+			}
+			jsonData.push(obj);
+		}
+
+		console.log(jsonData);
 
 		// var header = arr[0].split(', ');
 		// var jsonData = [];
