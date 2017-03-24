@@ -23,7 +23,6 @@ fs.readFile('data.csv', function(err, csvData){
 					while(arr[i][index] !== '"'){
 						index++;
 					}
-					index++;
 				}
 				if(arr[i][index] === ',' || index === arr[i].length-1){
 					if(index === arr[i].length-1){
