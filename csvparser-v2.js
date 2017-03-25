@@ -38,7 +38,16 @@ fs.readFile('data.csv', function(err, csvData){
 				arrData.push(arr);
 			}
 		}
-		console.log(header);
-		console.log(arrData);
+
+		var jsonData = [];
+
+		for(i=0; i<arrData.length; i++){
+			obj = {};
+			for(j=0; j<arrData[i].length; j++){
+				obj[header[j]] = arrData[i][j];
+			}
+			jsonData.push(obj);
+		}
+		console.log(jsonData);
 	}
 });
