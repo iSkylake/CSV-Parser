@@ -14,7 +14,14 @@ fs.readFile('data.csv', function(err, csvData){
 			var arr = [];
 			var index = 0;
 			while(index <= arrLine[i].length){
-				if(arrLine[i][index] === ',' || index === arrLine[i].length){
+				if(arrLine[i][index] === '"'){
+					do{
+						str += arrLine[i][index];
+						index++;
+					} while(arrLine[i][index] !== '"');
+					str += arrLine[i][index];
+					index++;
+				} else if(arrLine[i][index] === ',' || index === arrLine[i].length){
 					if(i === 0){
 						header.push(str);
 					} else {
