@@ -7,14 +7,19 @@ fs.readFile('data.csv', function(err, csvData){
 		var arrLine = csvData.toString().split('\r\n');
 
 		var str = '';
-		var arrAll = [];
+		var arrData = [];
+		var header = [];
 
 		for(i=0; i<arrLine.length; i++){
 			var arr = [];
 			var index = 0;
 			while(index <= arrLine[i].length){
 				if(arrLine[i][index] === ',' || index === arrLine[i].length){
-					arr.push(str);
+					if(i === 0){
+						header.push(str);
+					} else {
+						arr.push(str);
+					}
 					index += 2;
 					str = '';
 				} else {
@@ -22,9 +27,11 @@ fs.readFile('data.csv', function(err, csvData){
 					index++;
 				}
 			}
-			arrAll.push(arr);
+			if(arr.length > 1){
+				arrData.push(arr);
+			}
 		}
-
-		console.log(arrAll);
+		console.log(header);
+		console.log(arrData);
 	}
 });
